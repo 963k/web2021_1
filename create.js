@@ -2,9 +2,10 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test2.db');
 
 let schema = `
-create table family(
+create table animefilm(
   id integer primary key,
-  name text not null
+  name text not null,
+  income real not null
 );
 `
 
