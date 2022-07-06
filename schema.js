@@ -3,7 +3,7 @@ const db = new sqlite3.Database('test2.db');
 
 let sql = `
 
-select name,income sql from sqlite_master where type='table';
+select name, sql from sqlite_master where type='table';
 `;
 
 db.serialize( () => {
