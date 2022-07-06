@@ -5,12 +5,12 @@
     <title>Show message</title>
   </head>
   <body>
-    <h2><%=data[0].都道府県 %>の詳細</h2>
+    <h2><%=data[0].name %>の詳細</h2>
     <table>
       <% for (let row of data){%>
         <tr><td>ID</td><td><%= row.id %></td></tr>
-        <tr><td>人口</td><td><%= row.人口 %></td></tr>
-        <tr><td>大学数</td><td><%= row.大学 %></td></tr>
+        <tr><td>income</td><td><%= row.income %></td></tr>
+        <tr><td>maker</td><td><%= row.maker %></td></tr>
       <%}%>      
         
     </table>

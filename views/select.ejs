@@ -5,13 +5,14 @@
   <title>Show message</title>
 </head>
 <body>
-  <h2>都道府県ごとの人口</h2>
+  <h2>日本のアニメ映画のタイトルと興行収入</h2>
   <table>
       <% for( let row of data ) { %>
         <tr>
             <td><%= row.id %></td>
-            <td><%= row.都道府県 %></td>
-            <td><%= row.人口 %></td>
+            <td><%= row.name %></td>
+            <td><%= row.income %></td>
+            <td><%= row.maker_id %></td>
         </tr>
       <% } %>
   </table>

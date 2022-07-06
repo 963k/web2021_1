@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 
 app.get("/db", (req, res) => {
     db.serialize( () => {
-        db.all("select id, タイトル, 興行収入, 制作会社 from animefilm;", (error, row) => {
+        db.all("select id, name, income, maker_id from animefilm;", (error, row) => {
             if( error ) {
                 res.render('show', {mes:"エラーです"});
             }
@@ -26,7 +26,7 @@ app.get("/top", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select id, タイトル, 興行収入,　制作会社 from animefilm order by 興行収入" + desc + " limit " + req.query.pop + ";";
+    let sql = "select id, name, income,　maker from animefilm order by income" + desc + " limit " + req.query.pop + ";";
     //console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
@@ -41,7 +41,7 @@ app.get("/top", (req, res) => {
 
 app.get("/db/:id",(req,res)=>{
   db.serialize(()=>{
-    db.all("select id,タイトル,興行収入,制作会社 from example where id = " + req.params.id + ";",(error,row)=>{
+    db.all("select id,name,income,maker from animefilm where id = " + req.params.id + ";",(error,row)=>{
       if(error){
         res.render('show',{mes:"エラーです"});
       }
@@ -59,7 +59,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post("/insert",(req,res)=>{
   let sql=`
-insert into example (タイトル,興行収入,制作会社)values("`+req.body.name +`",`+ req.body.income +`,`+req.body.maker +`);`
+insert into example (name,income,maker)values("`+req.body.name +`",`+ req.body.income +`,`+req.body.maker +`);`
   console.log(sql);
   db.serialize(()=>{
     db.run(sql,(error,row)=>{
